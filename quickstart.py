@@ -12,8 +12,8 @@ from googleapiclient.errors import HttpError
 SCOPES = ['https://www.googleapis.com/auth/spreadsheets.readonly']
 
 # The ID and range of a sample spreadsheet.
-SAMPLE_SPREADSHEET_ID = '11XJb2DTlHkD5wZzHmd1e1EFi5dHGmJFx-d1PPODMq4M'
-SAMPLE_RANGE_NAME = 'ХИТ Продаж!C2:E'
+SAMPLE_SPREADSHEET_ID = '1OYkQNOg0NJkXRSwCyoGVtHYmy9Ber2yXzP7a_Pr4BkQ'
+SAMPLE_RANGE_NAME = 'ХИТ Продаж!C2:D'
 
 
 def main():
@@ -24,6 +24,7 @@ def main():
     # The file token.json stores the user's access and refresh tokens, and is
     # created automatically when the authorization flow completes for the first
     # time.
+    list_of_hits = []
     if os.path.exists('token.json'):
         creds = Credentials.from_authorized_user_file('token.json', SCOPES)
     # If there are no (valid) credentials available, let the user log in.
@@ -54,13 +55,14 @@ def main():
         #print(values)
         #print('Name, Major:')
 
-        list_of_hits = []
+        #list_of_hits = []
         for row in values:
             # Print columns A and E, which correspond to indices 0 and 4.
             list_of_hits.append(row[0])
-        print(list_of_hits)
+        #print(list_of_hits)
     except HttpError as err:
         print(err)
+    return list_of_hits
 
 
 if __name__ == '__main__':
